@@ -35,9 +35,20 @@ describe('AppController', () => {
     it('should return 10 : sum of numbers available in "//;\n1\n;2;3;4" ', () => {
       expect(appController.getSum('//;\n1\n;2;3;4')).toBe(10);
     });
+    it('should return 6 : sum of numbers available in "//;\n1\n;2;3;1*4" ', () => {
+      expect(appController.getSum('//;\n1\n;2;3;1*4')).toBe(6);
+    });
 
-    it('should return 10 : sum of numbers available in "//;\n1\n;-2;3;4" ', () => {
-      expect(appController.getSum('//;\n1\n;2;3;4')).toBe(10);
+    it('should throw an error when negative numbers are present', () => {
+      expect(() => appController.getSum('//;\n1\n;-2;3;4')).toThrow(
+        'Negative numbers not allowed: -2',
+      );
+    });
+
+    it('should throw an error when negative numbers are present', () => {
+      expect(() => appController.getSum('//;\n1\n;-2;3;-4;-10*10')).toThrow(
+        'Negative numbers not allowed: -2',
+      );
     });
   });
 });

@@ -24,10 +24,14 @@ export class AppService {
       }
     }
 
+    console.log('numbers', numbers);
     const numArray = numbers
       .split(delimiter)
       .map((n) => n.trim()) // Remove any whitespace
-      .filter((n) => !isNaN(Number(n))) // Keep only valid numbers
+      .filter((n) => {
+        console.log('filter', n);
+        return !isNaN(Number(n));
+      }) // Keep only valid numbers
       .map(Number); // Convert to numbers
 
     console.log(numArray);
