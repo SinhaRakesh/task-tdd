@@ -19,4 +19,9 @@ describe('AppController', () => {
       expect(appController.getHello()).toBe('Hello World!');
     });
   });
+  describe('getSum', () => {
+    it('should return 0 : sum of numbers in "" ', () => {
+      expect(appController.getSum('')).toBe(0);
+    });
+  });
 });
